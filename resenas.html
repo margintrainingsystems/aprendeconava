@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reseñas de alumnos | AVA</title>
+<meta name="description" content="Lo que dicen quienes ya cursaron en AVA. Dejá tu propia reseña si sos alumno o alumna.">
+<link rel="canonical" href="https://aprendeconava.com/resenas.html">
+<meta property="og:title" content="Reseñas de alumnos | AVA">
+<meta property="og:description" content="Lo que dicen quienes ya cursaron en AVA.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aprendeconava.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/hero.css">
+<link rel="stylesheet" href="/css/inner.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://aprendeconava.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Reseñas", "item": "https://aprendeconava.com/resenas.html" }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="AVA — inicio">
+      <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/sobre-ava.html">Sobre AVA</a></li>
+        <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
+        <li><a href="/suscripcion.html">Suscripción</a></li>
+        <li><a href="/resenas.html" class="is-active">Reseñas</a></li>
+        <li><a href="/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://campus.aprendeconava.com/" class="btn btn-outline btn-sm" data-campus-link>Acceder al Campus</a>
+      <a href="/suscripcion.html" class="btn btn-solid btn-sm">Suscribirme</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" id="nav-toggle">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <p class="mono-tag reveal">Reseñas</p>
+      <h1 class="h-display reveal" style="margin-top:14px; max-width:18ch;">Lo que dicen quienes ya cursaron</h1>
+    </div>
+  </section>
+
+  <!-- ============== CARRUSEL ============== -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="shelf" id="testimonials-shelf">
+        <div class="shelf-head">
+          <div></div>
+          <div class="shelf-controls">
+            <button class="shelf-arrow" data-shelf-prev aria-label="Reseña anterior">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="shelf-arrow" data-shelf-next aria-label="Siguiente reseña">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="shelf-track" data-testimonials-track>
+          <div class="empty-state" style="padding:32px 0; color:var(--text-faint);">Cargando reseñas…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FORMULARIO ============== -->
+  <section class="section section-border-t">
+    <div class="container" style="max-width:640px;">
+      <h2 class="h-xl reveal">¿Ya cursaste en AVA?</h2>
+      <p class="body-lg reveal" style="margin-top:12px;">Dejá tu reseña. La revisamos antes de publicarla — puede tardar un par de días en aparecer.</p>
+
+      <form id="testimonial-form" class="stack-md reveal" style="margin-top:28px;">
+        <div class="field">
+          <label for="tf-name">Tu nombre</label>
+          <input type="text" id="tf-name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="tf-testimonial">Tu reseña</label>
+          <textarea id="tf-testimonial" required style="min-height:120px;"></textarea>
+        </div>
+        <div class="field">
+          <label>Másteres o cursos que hiciste</label>
+          <div id="tf-masters-checks" style="display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:4px;">
+            <span class="field-hint">Cargando…</span>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-solid" id="tf-submit">Enviar mi reseña</button>
+        </div>
+        <p class="auth-success-msg" id="tf-success" style="display:none; color:var(--green); font-weight:600;">¡Gracias! Tu reseña va a aparecer acá apenas la revisemos.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
+        <p id="footer-tagline">Academia online de tecnología y herramientas para tu trabajo y tu futuro. Datos, IA aplicada, programación, marketing, empleabilidad, inteligencia emocional y mucho más, con método y comunidad real.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Academia</h4>
+        <ul>
+          <li><a href="/sobre-ava.html">Sobre AVA</a></li>
+          <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
+          <li><a href="/suscripcion.html">Suscripción</a></li>
+          <li><a href="/resenas.html">Reseñas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="/contacto.html">Contacto</a></li>
+          <li><a href="/privacidad.html">Privacidad</a></li>
+          <li><a href="/terminos.html">Términos y condiciones</a></li>
+          <li><a href="https://campus.aprendeconava.com/" data-campus-link>Acceder al Campus</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <ul>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AVA. Todos los derechos reservados.</span>
+      <span>Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/site-data.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/whatsapp-widget.js"></script>
+<script src="/js/testimonials.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | AVA</title>
+<meta name="description" content="Escribinos por dudas sobre AVA. Respondemos por email y por nuestras redes.">
+<link rel="canonical" href="https://aprendeconava.com/contacto.html">
+<meta property="og:title" content="Contacto | AVA">
+<meta property="og:description" content="Escribinos tus dudas sobre AVA.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aprendeconava.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/hero.css">
+<link rel="stylesheet" href="/css/inner.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "AVA",
+  "url": "https://aprendeconava.com/",
+  "email": "hola@aprendeconava.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "sameAs": [
+    "https://instagram.com/",
+    "https://linkedin.com/",
+    "https://facebook.com/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://aprendeconava.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Contacto", "item": "https://aprendeconava.com/contacto.html" }
+  ]
+}
+</script>
+<!-- Google Analytics 4 — reemplazar G-XXXXXXXXXX por tu Measurement ID real y descomentar -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="AVA — inicio">
+      <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/sobre-ava.html">Sobre AVA</a></li>
+        <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
+        <li><a href="/suscripcion.html">Suscripción</a></li>
+        <li><a href="/resenas.html">Reseñas</a></li>
+        <li><a href="/contacto.html" class="is-active">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://campus.aprendeconava.com/" class="btn btn-outline btn-sm" data-campus-link>Acceder al Campus</a>
+      <a href="/suscripcion.html" class="btn btn-solid btn-sm">Suscribirme</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" id="nav-toggle">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============== HERO ============== -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="mono-tag reveal">Contacto</p>
+      <h1 class="h-display reveal" style="margin-top:14px; max-width:16ch;">¿En qué te podemos ayudar?</h1>
+      <p class="body-lg reveal" style="margin-top:18px; max-width:52ch; transition-delay:100ms;">
+        Escribinos para resolver todas tus dudas o consultas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container contact-grid">
+
+      <!-- Formulario -->
+      <div class="reveal">
+        <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="empresa" class="stack-sm">
+          <input type="hidden" name="form-name" value="contacto">
+          <p class="visually-hidden"><label>No completar: <input name="empresa"></label></p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="ct-nombre">Nombre</label>
+              <input type="text" id="ct-nombre" name="nombre" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="ct-email">Email</label>
+              <input type="email" id="ct-email" name="email" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ct-motivo">Motivo de la consulta</label>
+            <select id="ct-motivo" name="motivo">
+              <option value="Propuesta académica">Propuesta académica</option>
+              <option value="Suscripción y pagos">Suscripción y pagos</option>
+              <option value="Certificación">Certificación</option>
+              <option value="Prensa / alianzas">Prensa / alianzas</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="ct-mensaje">Mensaje</label>
+            <textarea id="ct-mensaje" name="mensaje" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-solid" style="margin-top:6px;">Enviar mensaje</button>
+
+          <p id="contact-success" class="form-note" style="display:none; margin-top:16px;">
+            <span>ⓘ</span><span>¡Gracias! Recibimos tu mensaje y te respondemos a la brevedad.</span>
+          </p>
+        </form>
+      </div>
+
+      <!-- Info directa -->
+      <div class="reveal contact-info" style="transition-delay:120ms;">
+        <div>
+          <h3 class="h-md">WhatsApp</h3>
+          <div id="whatsapp-areas" style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
+            <span class="body-md" style="color:var(--text-faint);">Cargando…</span>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <h3 class="h-md">Email</h3>
+          <p class="body-md" style="margin-top:8px;"><a href="mailto:hola@aprendeconava.com">hola@aprendeconava.com</a></p>
+        </div>
+        <div style="margin-top:32px;">
+          <h3 class="h-md">Redes</h3>
+          <ul class="social-list">
+            <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
+        <p id="footer-tagline">Academia online de tecnología y herramientas para tu trabajo y tu futuro. Datos, IA aplicada, programación, marketing, empleabilidad, inteligencia emocional y mucho más, con método y comunidad real.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Academia</h4>
+        <ul>
+          <li><a href="/sobre-ava.html">Sobre AVA</a></li>
+          <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
+          <li><a href="/suscripcion.html">Suscripción</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="/contacto.html">Contacto</a></li>
+          <li><a href="/privacidad.html">Privacidad</a></li>
+          <li><a href="/terminos.html">Términos y condiciones</a></li>
+          <li><a href="https://campus.aprendeconava.com/" data-campus-link>Acceder al Campus</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <ul>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AVA. Todos los derechos reservados.</span>
+      <span>Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/site-data.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/whatsapp-widget.js"></script>
+<script src="/js/contact-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* ============================================================
+   ACADEMIA AVA — Hero
+   ============================================================ */
+
+.hero-section{
+  padding: clamp(56px, 9vw, 96px) 0 clamp(48px, 8vw, 80px);
+  overflow: hidden;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items:center;
+  gap: 48px;
+}
+
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-motif{ order:-1; max-width: 240px; margin: 0 auto; }
+}
+
+.hero-copy .h-display{ max-width: 22ch; }
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.hero-note{
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+/* --- Motivo: dos triángulos que se juntan formando el rombo --- */
+.hero-motif{
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin-left: auto;
+}
+.hero-motif svg{ width:100%; height:auto; }
+
+.hero-motif .tri-top,
+.hero-motif .tri-bottom{
+  transition: transform 1.1s cubic-bezier(.16,.84,.44,1);
+}
+.hero-motif .tri-top{ transform: translateY(-46px); }
+.hero-motif .tri-bottom{ transform: translateY(46px); }
+
+.hero-motif.is-ready .tri-top{ transform: translateY(0); }
+.hero-motif.is-ready .tri-bottom{ transform: translateY(0); }
+
+/* leve deriva ambiental una vez ensamblado: se alejan y vuelven a tocarse, nunca se cruzan */
+@keyframes ava-breathe-up{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+}
+@keyframes ava-breathe-down{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(6px); }
+}
+.hero-motif.is-settled .tri-top{ animation: ava-breathe-up 6s ease-in-out infinite; }
+.hero-motif.is-settled .tri-bottom{ animation: ava-breathe-down 6s ease-in-out infinite; }
+
+/* --- Bloque "qué es AVA" y otros split de dos columnas --- */
+.intro-split{
+  display:grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+}
+@media (max-width: 780px){
+  .intro-split{ grid-template-columns: 1fr; gap: 20px; }
+}
