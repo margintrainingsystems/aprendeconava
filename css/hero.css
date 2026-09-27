@@ -47,8 +47,11 @@
 .hero-motif .tri-bottom{
   transition: transform 1.1s cubic-bezier(.16,.84,.44,1);
 }
-.hero-motif .tri-top{ transform: translateY(-46px); }
-.hero-motif .tri-bottom{ transform: translateY(46px); }
+/* separados solo si hay JS que los vuelva a juntar; sin JS se ve el isotipo armado */
+@media (scripting: enabled){
+  .hero-motif .tri-top{ transform: translateY(-46px); }
+  .hero-motif .tri-bottom{ transform: translateY(46px); }
+}
 
 .hero-motif.is-ready .tri-top{ transform: translateY(0); }
 .hero-motif.is-ready .tri-bottom{ transform: translateY(0); }

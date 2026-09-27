@@ -1,47 +1,84 @@
 // ============================================================
-// AVA — Lista de espera de suscripción (suscripcion.html)
-// No es un checkout: todavía no cobramos nada. Guarda nombre,
-// apellido, email, país y teléfono en la tabla "leads" de Supabase
-// (source: "suscripcion"), visible desde el panel Núcleo.
+// AVA — Lista de espera (suscripcion.html)
+// Todavía no se cobra nada: guarda nombre, apellido, email, país y
+// teléfono en "leads" (source: "suscripcion"), visible en Núcleo.
 // ============================================================
 (function () {
   'use strict';
-
   const form = document.getElementById('waitlist-form');
   if (!form) return;
 
+  const btn = form.querySelector('[data-waitlist-submit]');
+  const t = (key, fallback) => (window.avaText ? window.avaText(key, fallback) : fallback);
+  const formView = form.querySelector('[data-step="form"]');
+  const doneView = form.querySelector('[data-step="done"]');
+
+  let errorMsg = form.querySelector('[data-waitlist-error]');
+  if (!errorMsg) {
+    errorMsg = document.createElement('p');
+    errorMsg.className = 'form-note form-note-error';
+    errorMsg.setAttribute('role', 'alert');
+    errorMsg.dataset.waitlistError = '';
+    errorMsg.hidden = true;
+    errorMsg.style.marginTop = '16px';
+    errorMsg.innerHTML = '<span aria-hidden="true">!</span><span></span>';
+    formView.appendChild(errorMsg);
+  }
+
   function showDone() {
-    form.querySelectorAll('.checkout-view').forEach((v) => {
-      v.classList.toggle('is-active', v.dataset.step === 'done');
-    });
-    form.closest('.checkout-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    formView.classList.remove('is-active');
+    doneView.classList.add('is-active');
+    doneView.focus({ preventScroll: true });
+    form.closest('.form-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function showError(text) {
+    errorMsg.lastElementChild.textContent = text;
+    errorMsg.hidden = false;
   }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const btn = form.querySelector('[data-waitlist-submit]');
+    errorMsg.hidden = true;
+
+    const honeypot = form.querySelector('#wl-empresa');
+    if (honeypot && honeypot.value.trim() !== '') {
+      showDone();
+      return;
+    }
+    if (typeof supabaseClient === 'undefined') {
+      showError(t('waitlist_error_connection', 'No pudimos conectarnos para anotarte. Revisá tu conexión y probá de nuevo.'));
+      return;
+    }
+
+    // El texto del botón puede haber cambiado desde Núcleo: se toma recién ahora.
+    const original = btn.textContent;
     btn.disabled = true;
-    btn.textContent = 'Enviando…';
+    btn.textContent = t('form_sending', 'Enviando…');
 
-    const payload = {
-      source: 'suscripcion',
-      name: form.querySelector('#co-nombre').value.trim(),
-      last_name: form.querySelector('#co-apellido').value.trim(),
-      email: form.querySelector('#co-email').value.trim(),
-      country: form.querySelector('#co-pais').value.trim(),
-      phone: form.querySelector('#co-telefono').value.trim(),
-    };
-
+    let failed = true;
     try {
-      if (typeof supabaseClient !== 'undefined') {
-        await supabaseClient.from('leads').insert(payload);
-      }
+      const { error } = await supabaseClient.from('leads').insert({
+        privacy_consent: form.querySelector('#co-privacidad').checked,
+        source: 'suscripcion',
+        name: form.querySelector('#co-nombre').value.trim(),
+        last_name: form.querySelector('#co-apellido').value.trim(),
+        email: form.querySelector('#co-email').value.trim(),
+        country: form.querySelector('#co-pais').value.trim(),
+        phone: form.querySelector('#co-telefono').value.trim(),
+      });
+      failed = Boolean(error);
     } catch (err) {
-      /* si falla Supabase igual mostramos la confirmación: no bloqueamos a la persona por un error técnico */
+      failed = true;
     }
 
     btn.disabled = false;
-    btn.textContent = 'Anotarme a la lista de espera';
+    btn.textContent = original;
+
+    if (failed) {
+      showError(t('waitlist_error_send', 'No pudimos anotarte. Probá de nuevo en unos minutos; tus datos siguen cargados.'));
+      return;
+    }
     showDone();
   });
 })();

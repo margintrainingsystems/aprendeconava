@@ -2,8 +2,30 @@
    ACADEMIA AVA — Componentes
    ============================================================ */
 
+/* ---------- BOTONES DE ARREPENTIMIENTO Y BAJA (Disposición 954/2025) ----------
+   A simple vista y en el primer acceso de cualquier página. */
+.legal-bar{
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.8rem;
+}
+.legal-bar-inner{
+  display:flex;
+  justify-content:flex-end;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.legal-bar a{ color: var(--text); font-weight: 700; }
+.legal-bar a:hover{ color: var(--green); }
+@media (max-width: 560px){
+  .legal-bar-inner{ justify-content:center; }
+}
+
 /* ---------- NAV ---------- */
 .nav{
+  --nav-h: 73px; /* 16 + 40 (logo) + 16 + 1 de borde */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -36,8 +58,8 @@
   padding: 4px 0;
 }
 .nav-links a:hover{ color: var(--text); }
-.nav-links a.is-active{ color: var(--text); }
-.nav-links a.is-active::after{
+.nav-links a[aria-current="page"]{ color: var(--text); }
+.nav-links a[aria-current="page"]::after{
   content:'';
   position:absolute; left:0; right:0; bottom:-4px;
   height:2px; background: var(--green);
@@ -45,6 +67,7 @@
 }
 
 .nav-cta{ display:flex; align-items:center; gap: 12px; flex-shrink:0; }
+.nav-links-mobile{ display:none; }
 
 .nav-toggle{
   display:none;
@@ -60,7 +83,9 @@
 @media (max-width: 880px){
   .nav-links{
     position: fixed;
-    inset: 68px 0 0 0;
+    inset: var(--nav-h) 0 0 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--bg);
     flex-direction: column;
     align-items: flex-start;
@@ -68,14 +93,17 @@
     gap: 22px;
     transform: translateY(-12px);
     opacity: 0;
+    visibility: hidden; /* cerrado: tampoco se puede llegar con Tab */
     pointer-events: none;
-    transition: opacity var(--fast) var(--ease), transform var(--fast) var(--ease);
+    transition: opacity var(--fast) var(--ease), transform var(--fast) var(--ease), visibility 0s linear var(--fast);
     border-bottom: 1px solid var(--line-soft);
   }
   .nav-links a{ font-size: 1.1rem; }
   .nav-links.is-open{
-    opacity:1; transform: translateY(0); pointer-events:auto;
+    opacity:1; visibility: visible; transform: translateY(0); pointer-events:auto;
+    transition: opacity var(--fast) var(--ease), transform var(--fast) var(--ease), visibility 0s;
   }
+  .nav-links .nav-links-mobile{ display:block; margin-top: 8px; padding-top: 22px; border-top: 1px solid var(--line-soft); width: 100%; }
   .nav-toggle{ display:flex; }
   .nav-cta .btn-outline{ display:none; }
 }
@@ -94,9 +122,9 @@
 @media (max-width: 780px){
   .footer-grid{ grid-template-columns: 1fr 1fr; }
 }
-.footer-brand img{ height: 34px; margin-bottom: 16px; }
+.footer-brand img{ height: 34px; width:auto; margin-bottom: 16px; }
 .footer-brand p{ color: var(--text-faint); font-size: 0.88rem; max-width: 30ch; }
-.footer-col h4{
+.footer-col h2{
   font-family: var(--font-body);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
@@ -120,32 +148,13 @@
   color: var(--text-faint);
   font-size: 0.8rem;
 }
-
-/* ---------- MOTIVO GEOMÉTRICO (isotipo) ---------- */
-.motif-divider{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 8px 0;
+.footer-legal{
+  margin-top: 16px;
+  max-width: 110ch;
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  line-height: 1.55;
 }
-.motif-divider svg{ width: 26px; height: 26px; opacity: 0.7; }
-
-/* ---------- PÍLDORAS / ETIQUETAS DE ESTADO ---------- */
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  border: 1px solid var(--line);
-  color: var(--text-muted);
-}
-.pill-dot{ width:6px; height:6px; border-radius:50%; background: currentColor; }
-.pill-ready{ color: var(--green); border-color: rgba(18,224,134,0.3); }
-.pill-soon{ color: var(--text-faint); }
 
 /* ---------- FILA ESTILO STREAMING (Másteres) ---------- */
 .shelf{
@@ -181,6 +190,7 @@
   scrollbar-width: none;
 }
 .shelf-track::-webkit-scrollbar{ display:none; }
+.shelf-empty{ color: var(--text-faint); padding: 8px 0 24px; }
 
 .master-card{
   scroll-snap-align: start;
@@ -209,16 +219,6 @@
   font-size: 0.86rem;
   color: var(--text-muted);
   display:flex; align-items:flex-start; gap:8px;
-}
-.master-card-list li .status{
-  flex-shrink:0; margin-top: 3px; width: 6px; height:6px; border-radius:50%;
-}
-.status-ready{ background: var(--green); }
-.status-soon{ background: var(--text-faint); }
-.master-card-foot{
-  margin-top:auto;
-  display:flex; align-items:center; justify-content:space-between;
-  padding-top: 10px;
 }
 
 /* ---------- TARJETA DE RESEÑA ---------- */
@@ -251,6 +251,9 @@
   cursor: pointer;
 }
 .check-chip input{ accent-color: var(--green); width:16px; height:16px; }
+.check-group{ display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:4px; }
+fieldset.field-group{ border:0; margin:0; padding:0; min-width:0; }
+.field-group legend{ padding:0; margin-bottom:8px; font-size:0.86rem; font-weight:700; color: var(--text); }
 
 /* ---------- BOTÓN FLOTANTE DE WHATSAPP ---------- */
 .whatsapp-float{
@@ -272,34 +275,8 @@
 @media (max-width: 600px){
   .whatsapp-float{ right:16px; bottom:16px; width:50px; height:50px; }
 }
-  scroll-snap-align: start;
-  flex: 0 0 min(360px, 82vw);
-  background: var(--bg-raised);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-m);
-  padding: 28px;
-  display:flex;
-  flex-direction:column;
-  gap: 16px;
-}
-.testimonial-quote{
-  color: var(--text);
-  font-size: 1.02rem;
-  line-height: 1.6;
-  flex: 1;
-}
-.testimonial-quote::before{ content: '\201C'; }
-.testimonial-quote::after{ content: '\201D'; }
-.testimonial-name{ font-weight: 700; font-size: 0.95rem; }
-.testimonial-masters{ color: var(--text-faint); font-size: 0.82rem; }
-
-/* checkbox de másteres en el form de reseñas */
-.check-chip{
-  display:flex; align-items:center; gap:8px;
-  font-size: 0.9rem; color: var(--text-muted);
-  cursor: pointer;
-}
-.check-chip input{ accent-color: var(--green); width:16px; height:16px; }
+/* Con el botón flotante visible, el final del pie no queda tapado. */
+body:has(.whatsapp-float) .footer{ padding-bottom: 96px; }
 .edit-list{
   display:flex;
   flex-direction:column;
@@ -341,11 +318,16 @@
 .cta-band-actions{ display:flex; gap: 14px; flex-wrap: wrap; }
 
 /* ---------- FORM ELEMENTS ---------- */
+.form-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+/* Los formularios envían con JavaScript: sin JS se ocultan y queda el aviso <noscript>. */
+@media (scripting: none){ form[data-needs-js]{ display:none; } }
 .field{ display:flex; flex-direction:column; gap:8px; }
 .field label{ font-size:0.86rem; font-weight:700; color: var(--text); }
 .field input,
 .field select,
 .field textarea{
+  width: 100%;
+  min-width: 0;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
@@ -359,8 +341,7 @@
 .field select:focus,
 .field textarea:focus{ border-color: var(--green); outline: none; }
 .field textarea{ resize: vertical; min-height: 120px; }
-.field-hint{ font-size: 0.78rem; color: var(--text-faint); }
-.field-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field-row{ display:grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
 @media (max-width: 560px){ .field-row{ grid-template-columns: 1fr; } }
 
 .form-note{
@@ -371,6 +352,15 @@
   color: var(--text-muted);
   font-size: 0.85rem;
 }
+.form-note-error{ border-color: rgba(255, 107, 107, 0.45); color: var(--text); }
+
+/* Casilla de la Política de privacidad y aviso de los pedidos */
+.consent{ display:flex; gap:10px; align-items:flex-start; }
+.consent input{ accent-color: var(--green); width:18px; height:18px; margin-top:2px; flex:none; cursor:pointer; }
+.consent label{ font-size:0.86rem; line-height:1.5; color: var(--text-muted); cursor:pointer; }
+.consent a, .consent-note a{ color: var(--green); font-weight:600; }
+.consent a:hover, .consent-note a:hover{ text-decoration: underline; }
+.consent-note{ font-size:0.84rem; line-height:1.5; color: var(--text-muted); }
 
 /* ---------- Toast (aviso campus) ---------- */
 .toast{
@@ -392,3 +382,22 @@
   text-align: center;
 }
 .toast.is-shown{ opacity:1; transform: translate(-50%, 0); pointer-events:auto; }
+
+/* ---------- TEXTOS EDITABLES DESDE NÚCLEO ----------
+   El mismo espaciado con el texto estático del HTML y con el que llega de la base. */
+.copy-list{
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.copy-flow > * + *{ margin-top: 16px; }
+.copy-flow > * + .copy-section{ margin-top: 48px; }
+.copy-flow + .copy-flow{ margin-top: 48px; }
+.copy-section > * + *{ margin-top: 16px; }
+.copy-section > h2 + *{ margin-top: 12px; }
+.copy-flow p + .copy-list, .copy-section p + .copy-list{ margin-top: 10px; }
+/* Links dentro de textos editables y de respuestas frecuentes */
+.copy-flow a, .faq-a a{ color: var(--green); font-weight: 600; }
+.copy-flow a:hover, .faq-a a:hover{ text-decoration: underline; }

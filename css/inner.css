@@ -26,14 +26,6 @@
   border: 1px solid var(--line-soft);
   display:flex; align-items:center; justify-content:center;
 }
-.founder-portrait svg{ position:absolute; inset:0; width:100%; height:100%; }
-.founder-initials{
-  position:relative;
-  font-family: var(--font-display);
-  font-weight:800;
-  font-size: 2.6rem;
-  color: var(--bg);
-}
 
 /* --- Detalle de cada Máster (propuesta académica) --- */
 .master-detail-head{
@@ -44,7 +36,6 @@
   padding-bottom: 32px;
   border-bottom: 1px solid var(--line-soft);
 }
-.master-detail-head .pill{ margin-left:auto; flex-shrink:0; }
 .master-detail-head > div{ flex:1; min-width: 240px; }
 
 .master-detail-grid{
@@ -104,10 +95,18 @@
   transition: transform var(--fast) var(--ease);
 }
 .faq-item.is-open .faq-q .plus{ transform: rotate(45deg); }
-.faq-a{
-  max-height:0;
-  overflow:hidden;
-  transition: max-height var(--fast) var(--ease);
+/* Sin JavaScript las respuestas quedan abiertas: nunca hay contenido inaccesible. */
+@media (scripting: enabled){
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    visibility: hidden; /* cerrada: el lector de pantalla no la lee ni se llega con Tab */
+    transition: max-height var(--fast) var(--ease), visibility 0s linear var(--fast);
+  }
+  .faq-item.is-open .faq-a{ visibility: visible; transition: max-height var(--fast) var(--ease), visibility 0s; }
+}
+@media (scripting: none){
+  .faq-q .plus{ display:none; }
 }
 .faq-a p{ padding: 0 0 22px; color: var(--text-muted); max-width: 68ch; }
 
@@ -220,52 +219,16 @@
   .value-amount, .value-amount-final{ margin-left: 34px; }
 }
 
-/* --- Checkout simulado --- */
-.checkout-steps{
-  display:flex;
-  gap: 8px;
-  margin-bottom: 36px;
-}
-.checkout-steps .step{
-  flex:1;
-  height: 3px;
-  border-radius: 3px;
-  background: var(--line);
-  overflow:hidden;
-}
-.checkout-steps .step::after{
-  content:'';
-  display:block;
-  height:100%;
-  width:0%;
-  background: var(--green);
-  transition: width var(--fast) var(--ease);
-}
-.checkout-steps .step.is-done::after{ width:100%; }
-.checkout-steps .step.is-active::after{ width:50%; }
-
-.checkout-panel{
+/* --- Formularios en dos pasos (lista de espera, arrepentimiento, baja) --- */
+.form-panel{
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-m);
   background: var(--bg-raised);
   padding: clamp(26px, 4vw, 44px);
   max-width: 560px;
 }
-.checkout-view{ display:none; }
-.checkout-view.is-active{ display:block; }
-
-.checkout-summary{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: 16px 18px;
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-s);
-  margin-bottom: 24px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-.checkout-summary strong{ color: var(--text); }
+.form-view{ display:none; }
+.form-view.is-active{ display:block; }
 
 /* --- Contacto --- */
 .contact-grid{
@@ -280,6 +243,7 @@
 .social-list a{ color: var(--text-muted); font-weight:600; }
 .social-list a:hover{ color: var(--green); }
 .contact-info a{ color: var(--green); font-weight: 600; }
+.contact-block + .contact-block{ margin-top: 32px; }
 
 .success-icon{
   width: 56px; height:56px;
@@ -288,4 +252,30 @@
   color: var(--green);
   display:flex; align-items:center; justify-content:center;
   margin-bottom: 20px;
+}
+
+/* --- Arrepentimiento y baja --- */
+.request-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items:start;
+}
+@media (max-width: 880px){
+  .request-grid{ grid-template-columns: 1fr; gap: 36px; }
+}
+.request-code-label{
+  margin-top: 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.request-code{
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  letter-spacing: 0.06em;
+  color: var(--green);
+  margin-top: 4px;
 }

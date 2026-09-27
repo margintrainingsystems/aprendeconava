@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Página no encontrada | AVA</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#16171B">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,11 +18,15 @@
 </style>
 </head>
 <body>
-<div class="container err-wrap">
-  <img src="/assets/logo/logo-wordmark-white.png" alt="AVA" style="height:24px; margin-bottom:40px;">
+<main class="container err-wrap">
+  <a href="/" aria-label="AVA — inicio"><img src="/assets/logo/logo-wordmark-white.png" alt="AVA" width="240" height="240" style="width:auto; height:24px; margin-bottom:40px;"></a>
   <h1 class="h-display">404</h1>
-  <p class="body-lg" style="margin-top:16px; max-width:44ch;">Esta página no existe o todavía no la construimos. Volvamos al inicio.</p>
-  <a href="/" class="btn btn-solid" style="margin-top:28px;">Ir al inicio</a>
-</div>
+  <p data-copy="notfound_text" class="body-lg" style="margin-top:16px; max-width:44ch;">Esta página no existe o cambió de dirección.</p>
+  <a data-copy="notfound_cta" href="/" class="btn btn-solid" style="margin-top:28px;">Ir al inicio</a>
+</main>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/site-data.js"></script>
 </body>
 </html>

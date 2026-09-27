@@ -5,14 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Términos y condiciones | AVA</title>
 <meta name="description" content="Condiciones de uso de AVA: qué incluye la suscripción, cómo funciona la garantía de devolución y qué pasa si cancelás.">
-<link rel="canonical" href="https://aprendeconava.com/terminos.html">
+<link rel="canonical" href="https://aprendeconava.com/terminos">
 <meta property="og:title" content="Términos y condiciones | AVA">
 <meta property="og:description" content="Condiciones de uso y suscripción de AVA.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="AVA">
+<meta property="og:url" content="https://aprendeconava.com/terminos">
 <meta property="og:image" content="https://aprendeconava.com/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +30,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://aprendeconava.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Términos y condiciones", "item": "https://aprendeconava.com/terminos.html" }
+    { "@type": "ListItem", "position": 2, "name": "Términos y condiciones", "item": "https://aprendeconava.com/terminos" }
   ]
 }
 </script>
@@ -34,26 +38,34 @@
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
+<div class="legal-bar">
+  <div class="container legal-bar-inner">
+    <a data-copy="withdrawal_link" href="/arrepentimiento">Botón de arrepentimiento</a>
+    <a data-copy="cancel_link" href="/baja">Botón de baja de servicio</a>
+  </div>
+</div>
+
 <header class="nav">
   <div class="container nav-inner">
     <a href="/" class="nav-logo" aria-label="AVA — inicio">
-      <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
+      <img src="/assets/logo/logo-wordmark-white.png" alt="AVA" width="240" height="240">
     </a>
     <nav aria-label="Navegación principal">
       <ul class="nav-links" id="nav-links">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/sobre-ava.html">Sobre AVA</a></li>
-        <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
-        <li><a href="/suscripcion.html">Suscripción</a></li>
-        <li><a href="/resenas.html">Reseñas</a></li>
-        <li><a href="/contacto.html">Contacto</a></li>
+        <li><a data-copy="nav_home" href="/">Inicio</a></li>
+        <li><a data-copy="nav_about" href="/sobre-ava">Sobre AVA</a></li>
+        <li><a data-copy="nav_program" href="/propuesta-academica">Propuesta académica</a></li>
+        <li><a data-copy="nav_plan" href="/suscripcion">Suscripción</a></li>
+        <li><a data-copy="nav_reviews" href="/resenas">Reseñas</a></li>
+        <li><a data-copy="nav_contact" href="/contacto">Contacto</a></li>
+        <li class="nav-links-mobile"><a data-copy="nav_campus" href="/suscripcion#lista-de-espera" data-campus-link>Acceder al Campus</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="https://campus.aprendeconava.com/" class="btn btn-outline btn-sm" data-campus-link>Acceder al Campus</a>
-      <a href="/suscripcion.html" class="btn btn-solid btn-sm">Suscribirme</a>
-      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" id="nav-toggle">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <a data-copy="nav_campus" href="/suscripcion#lista-de-espera" class="btn btn-outline btn-sm" data-campus-link>Acceder al Campus</a>
+      <a data-copy="nav_cta" href="/suscripcion" class="btn btn-solid btn-sm">Suscribirme</a>
+      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">
+        <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>
@@ -62,37 +74,115 @@
 <main id="main">
   <section class="page-hero">
     <div class="container">
-      <p class="mono-tag">Términos y condiciones</p>
-      <h1 class="h-display" style="margin-top:14px; max-width:20ch;">Las reglas claras, antes de suscribirte</h1>
+      <h1 data-copy="terms_hero_title" class="h-display" style="max-width:20ch;">Las reglas claras, antes de suscribirte</h1>
     </div>
   </section>
 
   <section class="section section-border-t">
     <div class="container" style="max-width:760px;">
-      <div class="stack-lg">
-        <div>
+      <div class="copy-flow legal-owner" data-show-if-copy="provider_name">
+        <div class="copy-section">
+          <h2 data-copy="provider_title" class="h-lg">Quién presta el servicio</h2>
+          <p data-copy="provider_name" class="body-lg">AVA es un emprendimiento de Aimar Merino.</p>
+          <p data-copy="provider_cuit" class="body-lg" hidden data-copy-empty></p>
+          <p data-copy="provider_address" class="body-lg" hidden data-copy-empty></p>
+          <p class="body-lg"><span data-copy="provider_email_label">Email:</span> <a data-email-primary href="mailto:hola@aprendeconava.com">hola@aprendeconava.com</a></p>
+        </div>
+      </div>
+      <div class="copy-flow" data-copy-block="terminos_body">
+        <div class="copy-section">
+          <h2 class="h-lg">Aceptación de estos Términos</h2>
+          <p class="body-lg">Estos Términos regulan la contratación de la suscripción a AVA. Antes de pagar te pedimos que los leas y los aceptes marcando la casilla correspondiente: navegar el sitio no implica aceptarlos. Después del pago te enviamos por email la confirmación de tu compra con un enlace a estos Términos, para que puedas guardarlos.</p>
+        </div>
+        <div class="copy-section">
           <h2 class="h-lg">Qué incluye la suscripción</h2>
-          <p class="body-lg" style="margin-top:12px;">La suscripción anual da acceso a todos los Másteres y cursos publicados en AVA mientras esté activa, incluyendo el contenido nuevo que sumemos durante ese período. Los cursos de regalo mencionados en la propuesta no se venden por separado bajo ninguna circunstancia.</p>
+          <p class="body-lg">La suscripción da acceso, mientras esté activa, a todos los Másteres y cursos publicados en AVA, incluido el contenido nuevo que se sume durante ese período. Los cursos de regalo mencionados en la propuesta forman parte de la suscripción y no se venden por separado.</p>
+          <p class="body-lg">Actualizamos las clases para mantenerlas al día. Si mientras tu suscripción está activa tuviéramos que dar de baja un Máster completo, te avisamos por email y podés cancelar con la devolución proporcional del tiempo que te falte.</p>
         </div>
-        <div>
-          <h2 class="h-lg">Pago</h2>
-          <p class="body-lg" style="margin-top:12px;">El pago se procesa a través de PayPal o Mercado Pago. Mercado Pago está disponible para Argentina, Brasil, Chile, Colombia, Ecuador, México, Perú y Uruguay; para el resto de los países, el pago se hace por PayPal. AVA no recibe ni almacena datos de tarjetas en ningún caso — esa información queda del lado del procesador elegido, sujeta a sus propios términos.</p>
+        <div class="copy-section">
+          <h2 class="h-lg">Quién puede contratar</h2>
+          <p class="body-lg">La contratación la hace una persona mayor de 18 años. Si sos menor, la tiene que hacer tu madre, padre o tutor/a: esa persona acepta estos Términos y se hace cargo del pago, y vos usás el acceso.</p>
         </div>
-        <div>
+        <div class="copy-section">
+          <h2 class="h-lg">Precio y formas de pago</h2>
+          <p class="body-lg">El precio de la suscripción anual se muestra en el sitio antes de pagar. Si pagás en tu moneda local, el medio de pago te muestra el monto final y la conversión antes de que confirmes.</p>
+          <p class="body-lg">El pago se procesa a través de Mercado Pago (Argentina, Brasil, Chile, Colombia, Ecuador, México, Perú y Uruguay) o de PayPal (resto de los países). AVA no recibe ni guarda datos de tarjetas: esa información queda en el procesador que elijas, sujeta a sus propios términos.</p>
+          <p class="body-lg">Podés pagar el año en un solo pago o en cuotas con tarjeta de crédito. La cantidad de cuotas e intereses depende de tu banco y de tu medio de pago. En las cuotas, pagás el año en una sola compra y la financiación te la da tu banco o el procesador de pago: AVA no cobra cuotas por su cuenta. Antes de confirmar vas a ver el precio total, la cantidad de cuotas, el monto de cada una y, si lo hubiera, el costo financiero total (CFT) y la tasa efectiva anual (TEA). Las cuotas son una forma de pagar el año contratado, no una suscripción mensual.</p>
+        </div>
+        <div class="copy-section">
           <h2 class="h-lg">Garantía de devolución</h2>
-          <p class="body-lg" style="margin-top:12px;">Tenés 15 días corridos desde el momento del pago para pedir la devolución completa de tu dinero, sin necesidad de justificar el motivo. Pasado ese plazo, la suscripción no es reembolsable.</p>
+          <p class="body-lg">Tenés <span data-price="guarantee">15</span> días corridos desde el primer pago para pedir la devolución completa de lo que pagaste, sin explicar el motivo. Si pagaste en cuotas con tarjeta, la devolución se refleja en tu tarjeta según los plazos de tu banco. Pasado ese plazo, el año contratado no es reembolsable, salvo en los casos que prevén estos Términos o la ley.</p>
         </div>
-        <div>
-          <h2 class="h-lg">Cancelación</h2>
-          <p class="body-lg" style="margin-top:12px;">Podés cancelar la renovación de tu suscripción cuando quieras. Si cancelás, mantenés el acceso hasta el final del período ya pagado.</p>
+        <div class="copy-section">
+          <h2 class="h-lg">Derecho de arrepentimiento</h2>
+          <p class="body-lg">Como la contratación es a distancia, tenés derecho a revocarla dentro de los 10 días corridos desde que la hiciste, sin costo y sin explicar el motivo (artículo 34 de la Ley 24.240 y artículos 1110 y siguientes del Código Civil y Comercial). Si el último día no es hábil, el plazo se extiende hasta el día hábil siguiente. Este derecho es irrenunciable y lo reconocemos aunque el contenido sea digital.</p>
+          <p class="body-lg">Podés ejercerlo desde el <a href="/arrepentimiento">Botón de arrepentimiento</a>, sin registrarte, o escribiéndonos. Apenas lo envíes vas a ver el código de tu pedido, y dentro de las 24 horas te lo confirmamos por email. Te devolvemos todo lo pagado por el mismo medio de pago; si pagaste en cuotas con tarjeta, la devolución se refleja según los plazos de tu banco.</p>
         </div>
-        <div>
-          <h2 class="h-lg">Uso del contenido</h2>
-          <p class="body-lg" style="margin-top:12px;">El contenido de los cursos es para tu uso personal. No está permitido revenderlo, redistribuirlo ni compartir tu acceso con terceros.</p>
+        <div class="copy-section">
+          <h2 class="h-lg">Duración y renovación automática</h2>
+          <p class="body-lg">La suscripción dura un año desde el pago y se renueva automáticamente por otro año con el mismo medio de pago. Al menos 15 días antes de cada renovación te escribimos por email con la fecha, el precio y la forma de cobro, y con el enlace para darla de baja.</p>
+          <p class="body-lg">Si el precio cambia, te lo informamos en ese aviso: el precio nuevo rige recién desde la renovación, nunca durante el año que ya contrataste. Si no estás de acuerdo, podés dar de baja la suscripción antes de que se renueve.</p>
+          <p class="body-lg">Si la renovación se cobró y no la querías, tenés 10 días corridos desde ese cobro para pedir su devolución completa desde el <a href="/arrepentimiento">Botón de arrepentimiento</a>.</p>
         </div>
-        <div>
+        <div class="copy-section">
+          <h2 class="h-lg">Baja de la suscripción</h2>
+          <p class="body-lg">Podés dar de baja la suscripción cuando quieras desde el <a href="/baja">Botón de baja de servicio</a>, sin registrarte, o por el mismo medio por el que contrataste. Apenas envíes el pedido vas a ver su código, y dentro de las 24 horas te lo confirmamos por email. La baja nunca queda condicionada a que pagues algo antes.</p>
+          <p class="body-lg">Qué pasa cuando das de baja:</p>
+          <ul class="copy-list"><li>La suscripción no se renueva y mantenés el acceso hasta el final del año que contrataste.</li><li>Si pagaste en cuotas con tarjeta de crédito, esas cuotas son la financiación que te dio tu banco o el procesador de pago: la baja no las cancela, porque el año ya está pagado.</li><li>Si todavía estás dentro del plazo de garantía o del de arrepentimiento, te devolvemos lo pagado.</li><li>No es posible pausar la suscripción.</li></ul>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Cuándo podemos suspender o cancelar tu acceso</h2>
+          <p class="body-lg">AVA no puede cancelar tu suscripción sin causa. Solo podemos suspenderla o cancelarla si hay un incumplimiento grave de estos Términos, como compartir tu cuenta, revender o redistribuir el contenido o agredir a otras personas de la comunidad. Antes te avisamos por email y te damos la posibilidad de explicar lo que pasó.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Cupos</h2>
+          <p class="body-lg">Para cuidar la calidad del acompañamiento, abrimos una cantidad máxima de inscripciones por mes. Si el cupo del mes está completo, podés anotarte en la lista de espera y te avisamos cuando haya lugar. El cupo no afecta a quienes ya están suscriptos ni a las renovaciones.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Uso del contenido y propiedad intelectual</h2>
+          <p class="body-lg">Las clases, los videos, los textos, los materiales, la marca y el diseño de AVA pertenecen a AVA o a sus autoras y autores. Con la suscripción recibís un permiso personal e intransferible para usarlos mientras esté activa.</p>
+          <p class="body-lg">No está permitido copiar, descargar (salvo los materiales que marquemos como descargables), revender, redistribuir ni publicar el contenido, ni compartir tu acceso con otras personas. Lo que produzcas en los ejercicios es tuyo.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Comunidad</h2>
+          <p class="body-lg">En los espacios de comunidad pedimos trato respetuoso. Podemos moderar o quitar mensajes con insultos, acoso, publicidad o datos personales de otras personas.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Herramientas de otras empresas</h2>
+          <p class="body-lg">Algunas funciones usan servicios de otras empresas, como el asistente virtual (Gemini, de Google), la comunidad o los videos. Cada servicio tiene sus propios términos, su política de privacidad y su edad mínima. No compartas datos personales sensibles con el asistente, y tené en cuenta que las respuestas de una inteligencia artificial pueden tener errores: usalas como apoyo y verificá lo importante.</p>
+        </div>
+        <div class="copy-section">
           <h2 class="h-lg">Certificados</h2>
-          <p class="body-lg" style="margin-top:12px;">Los certificados que emite AVA son propios, con verificación por código QR en nuestro sitio. No equivalen a un título universitario ni a una certificación de una institución externa.</p>
+          <p class="body-lg">Al completar un Máster recibís un certificado emitido por AVA, con un código para verificarlo en nuestro sitio. Es un certificado propio: no es un título oficial ni equivale a una certificación de una universidad u otra institución.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Resultados</h2>
+          <p class="body-lg">Los cursos te dan herramientas y práctica. No podemos garantizar un empleo, un ascenso ni un nivel de ingresos, porque dependen de muchos factores que no controlamos.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Disponibilidad del servicio</h2>
+          <p class="body-lg">Trabajamos para que el Campus esté siempre disponible, pero puede haber interrupciones por mantenimiento o por fallas. Si una interrupción atribuible a AVA te impide acceder durante un período prolongado, extendemos tu suscripción por el tiempo equivalente.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Reseñas</h2>
+          <p class="body-lg">Si dejás una reseña, nos autorizás a publicarla en el sitio con el nombre que elegiste mostrar. Podemos no publicar reseñas con insultos, datos personales de otras personas o publicidad. Podés pedirnos que la quitemos cuando quieras.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Sorteo de beca del 50%</h2>
+          <p class="body-lg">Sin obligación de compra. Entre quienes se anoten en la lista de espera antes de la apertura de inscripciones, sorteamos una beca del 50% de descuento sobre el precio de lanzamiento. Es un sorteo privado organizado por AVA, exclusivo para quienes estén en la lista de espera y sin costo para participar. Las bases completas (fecha, mecánica y forma de elegir y avisar a la persona ganadora) se publican en esta página y se envían por email a quienes estén anotados antes del sorteo.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Cambios en estos Términos</h2>
+          <p class="body-lg">Podemos actualizar estos Términos para las nuevas contrataciones. Si un cambio afecta a una suscripción activa, rige recién desde la próxima renovación y te lo avisamos por email con al menos 15 días de anticipación, para que puedas dar de baja si no estás de acuerdo. Los cambios que exija la ley se aplican desde que entran en vigencia.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Atención y reclamos</h2>
+          <p class="body-lg">Podés escribirnos a <a data-email-primary href="mailto:hola@aprendeconava.com">hola@aprendeconava.com</a> o por los canales de la página de <a href="/contacto">Contacto</a>, donde figura nuestro horario de atención. Si no quedás conforme con nuestra respuesta, podés hacer un reclamo gratuito ante Defensa del Consumidor en <a href="https://www.argentina.gob.ar/servicio/iniciar-un-reclamo-ante-defensa-del-consumidor" target="_blank" rel="noopener">argentina.gob.ar</a> o ante el organismo de tu provincia o de tu país.</p>
+        </div>
+        <div class="copy-section">
+          <h2 class="h-lg">Ley aplicable y jurisdicción</h2>
+          <p class="body-lg">Estos Términos se rigen por las leyes de la República Argentina, sin perjuicio de los derechos que te reconozcan las normas de protección al consumidor de tu país. Podés reclamar ante los tribunales de tu domicilio, y AVA solo puede reclamarte ante esos mismos tribunales.</p>
+          <p class="body-lg">Última actualización: septiembre de 2026.</p>
         </div>
       </div>
     </div>
@@ -103,39 +193,39 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/assets/logo/logo-wordmark-white.png" alt="AVA">
-        <p id="footer-tagline">Academia online de tecnología y herramientas para tu trabajo y tu futuro. Datos, IA aplicada, programación, marketing, empleabilidad, inteligencia emocional y mucho más, con método y comunidad real.</p>
+        <img src="/assets/logo/logo-wordmark-white.png" alt="AVA" width="240" height="240">
+        <p data-copy="footer_tagline">Academia online de tecnología y habilidades para tu trabajo y tu futuro. Datos y Análisis, Inteligencia Artificial, Programación y Desarrollo Web, Habilidades Humanas y Marca y Empleabilidad, con método y comunidad real.</p>
       </div>
-      <div class="footer-col">
-        <h4>Academia</h4>
+      <nav class="footer-col" aria-labelledby="footer-academia">
+        <h2 data-copy="footer_col_academy" id="footer-academia">Academia</h2>
         <ul>
-          <li><a href="/sobre-ava.html">Sobre AVA</a></li>
-          <li><a href="/propuesta-academica.html">Propuesta académica</a></li>
-          <li><a href="/suscripcion.html">Suscripción</a></li>
+          <li><a data-copy="nav_about" href="/sobre-ava">Sobre AVA</a></li>
+          <li><a data-copy="nav_program" href="/propuesta-academica">Propuesta académica</a></li>
+          <li><a data-copy="nav_plan" href="/suscripcion">Suscripción</a></li>
+          <li><a data-copy="nav_reviews" href="/resenas">Reseñas</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Ayuda</h4>
+      </nav>
+      <nav class="footer-col" aria-labelledby="footer-ayuda">
+        <h2 data-copy="footer_col_help" id="footer-ayuda">Ayuda</h2>
         <ul>
-          <li><a href="/contacto.html">Contacto</a></li>
-          <li><a href="/privacidad.html">Privacidad</a></li>
-          <li><a href="/terminos.html">Términos y condiciones</a></li>
-          <li><a href="https://campus.aprendeconava.com/" data-campus-link>Acceder al Campus</a></li>
+          <li><a data-copy="nav_contact" href="/contacto">Contacto</a></li>
+          <li><a data-copy="footer_privacy" href="/privacidad">Privacidad</a></li>
+          <li><a data-copy="footer_terms" href="/terminos" aria-current="page">Términos y condiciones</a></li>
+          <li><a data-copy="withdrawal_link" href="/arrepentimiento">Botón de arrepentimiento</a></li>
+          <li><a data-copy="cancel_link" href="/baja">Botón de baja de servicio</a></li>
+          <li><a data-copy="nav_campus" href="/suscripcion#lista-de-espera" data-campus-link>Acceder al Campus</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Seguinos</h4>
-        <ul>
-          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-        </ul>
+      </nav>
+      <div class="footer-col" data-social-group hidden>
+        <h2 data-copy="footer_col_social">Seguinos</h2>
+        <ul data-social-list></ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year></span> AVA. Todos los derechos reservados.</span>
-      <span>Buenos Aires, Argentina</span>
+      <span data-copy="footer_rights">© <span data-year>2026</span> AVA. Todos los derechos reservados.</span>
+      <span data-copy="footer_location">Buenos Aires, Argentina</span>
     </div>
+    <p class="footer-legal" data-copy="legal_footer">El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley N° 25.326. La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que se interpongan con relación al incumplimiento de las normas sobre protección de datos personales.</p>
   </div>
 </footer>
 
@@ -144,5 +234,6 @@
 <script src="/js/site-data.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/whatsapp-widget.js"></script>
+<script src="/js/email-widget.js"></script>
 </body>
 </html>
