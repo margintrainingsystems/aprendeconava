@@ -340,6 +340,9 @@ body:has(.whatsapp-float) .footer{ padding-bottom: 96px; }
 .field input:focus,
 .field select:focus,
 .field textarea:focus{ border-color: var(--green); outline: none; }
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible{ outline: 2px solid var(--green); outline-offset: 1px; }
 .field textarea{ resize: vertical; min-height: 120px; }
 .field-row{ display:grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
 @media (max-width: 560px){ .field-row{ grid-template-columns: 1fr; } }

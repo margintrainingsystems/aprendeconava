@@ -184,7 +184,7 @@
         .split('\n')
         .map((l) => l.trim())
         .filter(Boolean)
-        .map((l) => `<li>${iconHTML}${inline(l)}</li>`)
+        .map((l) => `<li>${iconHTML}<span>${inline(l)}</span></li>`)
         .join('');
     });
 
@@ -202,9 +202,11 @@
     });
 
     // Bloques que solo se muestran si el texto correspondiente tiene contenido.
+    // Si la clave no está en la base, queda como viene en el HTML.
     document.querySelectorAll('[data-show-if-copy]').forEach((el) => {
       const value = copy[el.dataset.showIfCopy];
-      el.hidden = !(typeof value === 'string' && value.trim());
+      if (typeof value !== 'string') return;
+      el.hidden = !value.trim();
     });
 
     document.querySelectorAll('[data-copy-placeholder]').forEach((el) => {
