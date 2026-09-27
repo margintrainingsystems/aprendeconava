@@ -60,6 +60,7 @@
     try {
       const { error } = await supabaseClient.from('leads').insert({
         privacy_consent: form.querySelector('#co-privacidad').checked,
+        publish_consent: Boolean(form.querySelector('#co-publicar') && form.querySelector('#co-publicar').checked),
         source: 'suscripcion',
         name: form.querySelector('#co-nombre').value.trim(),
         last_name: form.querySelector('#co-apellido').value.trim(),
