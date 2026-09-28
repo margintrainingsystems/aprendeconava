@@ -49,6 +49,10 @@ Cada texto del HTML tiene una marca con su clave en la base (tabla `site_copy`):
 - `data-copy-options="clave"`: opciones de un desplegable (motivos de contacto).
 - `data-copy-placeholder="clave"`: texto de ejemplo dentro de un campo.
 
+Estados de inscripción (Suscripción): el CRM dice si las inscripciones están abiertas y si queda lugar (`crm_enrollment_status`, sin el número del cupo). Los textos con `data-copy-state="clave"` cambian de clave según el estado: cerradas usa `waitlist_title` y `waitlist_intro`; abiertas, `waitlist_open_title` y `waitlist_open_intro`; con el cupo completo, `waitlist_full_title` y `waitlist_full_intro`. Lo marcado con `data-raffle-only` (la casilla del sorteo) se oculta después de la apertura, porque quien se anota después ya no participa.
+
+Precio en pesos: `data-ars-note` muestra `plan_ars_note` con `{pesos}` (precio anual en pesos al dólar blue, calculado por el CRM con `crm_public_prices`) y `{cotizacion}`. Mientras ese texto esté vacío en Núcleo, no se muestra.
+
 En cualquier texto se pueden usar `{cantidad}` / `{Cantidad}` (cantidad de Másteres en palabras), `{garantia}` (días de garantía) y `{anio}` (año actual), y `*texto*` para cursiva. Un campo vacío en Núcleo oculta ese texto en el sitio (salvo los obligatorios, como botones y etiquetas de formularios).
 
 Lo único que no se edita desde Núcleo son los títulos y descripciones para Google y redes (`<title>`, `description`, `og:`): los buscadores y WhatsApp/LinkedIn leen el HTML sin ejecutar código, así que cambiarlos desde la base no tendría efecto real en cómo se ve el link compartido.

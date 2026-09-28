@@ -214,6 +214,7 @@
             <span class="plan-price-strike" data-show-if-promo><span data-price="currency">USD</span> <span data-price="regular">540</span></span>
             <div class="plan-price"><span class="plan-price-currency" data-price="currency">USD</span><span data-price="promo">400</span><span data-copy="plan_price_suffix" class="plan-price-suffix">/ año, en un pago o en cuotas</span></div>
           </div>
+          <p class="plan-ars" data-ars-note hidden></p>
           <p data-copy="plan_text" class="body-md" style="margin-top:14px; max-width:44ch;">
             Sin planes por curso ni niveles de acceso. Suscribiéndote entrás a todo lo que esté disponible hoy y a todo lo que sumemos después, mientras tu suscripción esté activa.
           </p>
@@ -237,8 +238,8 @@
   <!-- ============== LISTA DE ESPERA ============== -->
   <section class="section section-border-t" id="lista-de-espera">
     <div class="container">
-      <h2 data-copy="waitlist_title" class="h-xl reveal">Todavía no abrimos inscripciones</h2>
-      <p class="body-lg reveal" style="max-width:60ch; margin-top:14px;" data-copy="waitlist_intro">Dejá tus datos y te avisamos apenas puedas anotarte — vas a asegurarte el precio de lanzamiento y vas a participar del sorteo de 3 becas del 50% sobre el precio de lanzamiento, una para cada persona ganadora, exclusivo para quienes estén anotados en la lista de espera (sin obligación de compra; las bases están en Términos y condiciones). Los cupos son limitados: abrimos una cantidad máxima de inscripciones por mes.</p>
+      <h2 data-copy="waitlist_title" data-copy-state="waitlist_title" class="h-xl reveal">Todavía no abrimos inscripciones</h2>
+      <p class="body-lg reveal" style="max-width:60ch; margin-top:14px;" data-copy="waitlist_intro" data-copy-state="waitlist_intro">Dejá tus datos y te avisamos apenas puedas anotarte — vas a asegurarte el precio de lanzamiento y vas a participar del sorteo de 3 becas del 50% sobre el precio de lanzamiento, una para cada persona ganadora, exclusivo para quienes estén anotados en la lista de espera (sin obligación de compra; las bases están en Términos y condiciones). Los cupos son limitados: abrimos una cantidad máxima de inscripciones por mes.</p>
 
       <div class="form-panel reveal" style="margin-top:32px;">
         <noscript><p class="form-note"><span aria-hidden="true">ⓘ</span><span>Para enviar este formulario necesitás tener JavaScript activado en tu navegador.</span></p></noscript>
@@ -279,7 +280,7 @@
                 <input type="checkbox" id="co-mayor" name="mayor" required>
                 <label for="co-mayor"><span data-copy="adult_confirm_label">Declaro que tengo 18 años o más.</span></label>
               </div>
-              <div class="consent">
+              <div class="consent" data-raffle-only>
                 <input type="checkbox" id="co-publicar" name="publicar">
                 <label for="co-publicar"><span data-copy="publish_consent_label">Si gano una de las becas del sorteo, autorizo a AVA a publicar mi nombre y la inicial de mi apellido en su sitio y sus redes (opcional).</span></label>
               </div>

@@ -62,6 +62,8 @@
   const state = {
     pricing: null,
     masters: null,
+    enrollment: null,
+    prices: null,
     guarantee: firstText('[data-price="guarantee"]'),
     countWord: firstText('[data-master-count-word]'),
   };
@@ -306,7 +308,53 @@
       });
     }
 
+    // Precio en pesos (lo calcula el CRM al dólar blue). Sin texto en Núcleo, no se muestra.
+    const ars = state.prices && state.prices.plan ? state.prices.plan.ars : null;
+    document.querySelectorAll('[data-ars-note]').forEach((el) => {
+      const template = window.avaText('plan_ars_note', '');
+      if (!template || ars == null) {
+        el.hidden = true;
+        return;
+      }
+      el.innerHTML = inline(template)
+        .replace(/\{pesos\}/g, esc(`$ ${formatNumber(ars)}`))
+        .replace(/\{cotizacion\}/g, esc(`$ ${formatNumber(state.prices.cotizacion)}`));
+      el.hidden = false;
+    });
+
     setAll('[data-year]', new Date().getFullYear());
+  }
+
+  /* ---------- Inscripciones (las abre y las cierra el CRM) ----------
+     El CRM dice si están abiertas y si queda lugar, sin mostrar el
+     número del cupo. Cada texto con data-copy-state cambia de clave
+     según el estado: waitlist_title pasa a waitlist_open_title o a
+     waitlist_full_title. Si la consulta falla, queda el texto de siempre. */
+  const ENROLLMENT_FALLBACK = {
+    waitlist_open_title: 'Ya abrimos inscripciones',
+    waitlist_open_intro: 'Estamos terminando de conectar el pago en el sitio. Dejá tus datos y te escribimos para que te sumes.',
+    waitlist_full_title: 'Se completaron los lugares',
+    waitlist_full_intro: 'Los lugares de la suscripción anual están completos. Dejá tus datos y te avisamos cuando se libere uno.',
+  };
+  function enrollmentKey(base) {
+    const e = state.enrollment;
+    if (!e || !e.abiertas) return base;
+    return base.replace(/^waitlist_/, e.hay_lugar ? 'waitlist_open_' : 'waitlist_full_');
+  }
+  function applyEnrollment() {
+    document.querySelectorAll('[data-copy-state]').forEach((el) => {
+      const key = enrollmentKey(el.dataset.copyState);
+      if (el.dataset.copy === key) return;
+      el.dataset.copy = key;
+      if (ENROLLMENT_FALLBACK[key]) el.textContent = ENROLLMENT_FALLBACK[key];
+    });
+    // Después de la apertura, quien se anota ya no entra al sorteo: sin casilla del sorteo.
+    document.querySelectorAll('[data-raffle-only]').forEach((el) => {
+      el.hidden = Boolean(state.enrollment && state.enrollment.abiertas);
+      const box = el.querySelector('input[type="checkbox"]');
+      if (box && el.hidden) box.checked = false;
+    });
+    applyCopy();
   }
 
   /* ---------- Consultas (una sola por tabla, compartidas) ---------- */
@@ -326,13 +374,24 @@
       return error || !data ? null : data;
     });
 
+  const getEnrollment = () =>
+    fetchOnce('enrollment', async () => {
+      const { data, error } = await supabaseClient.rpc('crm_enrollment_status');
+      return error || !data ? null : data;
+    });
+  const getPrices = () =>
+    fetchOnce('prices', async () => {
+      const { data, error } = await supabaseClient.rpc('crm_public_prices');
+      return error || !data ? null : data;
+    });
+
   const needsMasters = () =>
     document.querySelector('[data-masters-track], [data-master-details], [data-master-count-word], [data-master-price-rows]');
   const needsPricing = () => document.querySelector('[data-price], [data-master-price-rows]');
 
   // Se llama al arrancar y después de insertar textos (que pueden traer marcadores
   // nuevos). Cada tabla se pide y se dibuja una sola vez; lo demás es applyDynamic().
-  const requested = { masters: false, pricing: false };
+  const requested = { masters: false, pricing: false, enrollment: false, prices: false };
   function loadNumbers() {
     if (!requested.masters && needsMasters()) {
       requested.masters = true;
@@ -341,6 +400,22 @@
         state.masters = data;
         renderMasters();
         renderMasterDetails();
+        applyDynamic();
+      });
+    }
+    if (!requested.enrollment && document.querySelector('[data-copy-state]')) {
+      requested.enrollment = true;
+      getEnrollment().then((data) => {
+        if (!data) return;
+        state.enrollment = data;
+        applyEnrollment();
+      });
+    }
+    if (!requested.prices && document.querySelector('[data-ars-note]')) {
+      requested.prices = true;
+      getPrices().then((data) => {
+        if (!data) return;
+        state.prices = data;
         applyDynamic();
       });
     }
